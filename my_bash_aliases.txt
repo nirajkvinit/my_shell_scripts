@@ -1,0 +1,59 @@
+# Reload .bashrc
+alias bashrc='source ~/.bashrc'
+
+# Git Aliases
+alias gitc='git clone'			# Git clone
+alias gits='git status'			# Git status
+alias gita='git add -A'			# Git Add untracked changes
+alias gpom='git push origin master'	# Git push origin master
+
+# Deactivate virtualenv
+alias de='deactivate'
+
+# Activate virtualenv of a directory. (It requires .venv directory to be present in the target directory)
+alias ae='de &> /dev/null; source ./venv/bin/activate'
+
+# Create Python3 virtualenv in current directory
+alias venv='python3 -m venv ./venv'
+
+# Create a python 3 project dir with its own virtualenv 
+function mdpy() {
+        mkdir $1	# Create a directory based on the name provided in the argument
+        cd $1		# Change to the created directory
+
+	# Check if python3-venv is installed or not. If it is not installed then install.
+	PKG_OK=$(dpkg-query -W --showformat='${Status}\n' python3-venv|grep "install ok installed")
+	
+	echo Checking for python3-venv: $PKG_OK
+
+	if [ "" == "$PKG_OK" ]; then
+		echo "No python3-venv. Setting up python3-venv."
+		sudo apt-get --yes install python3-venv
+	fi
+
+        venv	# Create virtual environment inside the directory with .venv directory
+        ae	# Activate the environment
+}
+
+##### ea - alias for editing aliases
+alias ea='gedit ~/.bash_aliases; source ~/.bash_aliases && source $HOME/.bash_aliases && echo "aliases sourced  --ok."'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# References
+#https://stackoverflow.com/questions/1298066/check-if-a-package-is-installed-and-then-install-it-if-its-not
