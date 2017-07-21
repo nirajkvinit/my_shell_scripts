@@ -5,6 +5,7 @@ alias bashrc='source ~/.bashrc'
 alias gitc='git clone'			# Git clone
 alias gits='git status'			# Git status
 alias gita='git add -A'			# Git Add untracked changes
+alias gitcm='git commit -m'		# Git commit
 alias gpom='git push origin master'	# Git push origin master
 
 # Deactivate virtualenv
