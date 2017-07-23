@@ -5,8 +5,8 @@ alias bashrc='source ~/.bashrc'
 alias gitc='git clone'			# Git clone
 alias gits='git status'			# Git status
 alias gita='git add -A'			# Git Add untracked changes
-alias gitcm='git commit -m'		# Git commit
-alias gpom='git push origin master'	# Git push origin master
+alias gitcom='git commit -m'		# Git commit
+alias gitpom='git push origin master'	# Git push origin master
 
 # Deactivate virtualenv
 alias de='deactivate'
@@ -23,6 +23,9 @@ function mdpy() {
         cd $1		# Change to the created directory
 
 	# Check if python3-venv is installed or not. If it is not installed then install.
+	# References
+	#https://stackoverflow.com/questions/1298066/check-if-a-package-is-installed-and-then-install-it-if-its-not
+
 	PKG_OK=$(dpkg-query -W --showformat='${Status}\n' python3-venv|grep "install ok installed")
 	
 	echo Checking for python3-venv: $PKG_OK
@@ -41,20 +44,3 @@ alias ea='gedit ~/.bash_aliases; source ~/.bash_aliases && source $HOME/.bash_al
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# References
-#https://stackoverflow.com/questions/1298066/check-if-a-package-is-installed-and-then-install-it-if-its-not
